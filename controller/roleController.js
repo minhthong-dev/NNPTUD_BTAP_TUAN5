@@ -19,7 +19,19 @@ const createRole = async (req, res) => {
         res.status(400).json(error)
     }
 }
+const deleteRole = async (req, res) => {
+    try {
+        const role = await roleService.deleteRole(req.body.role_id)
+        if (role)
+            res.status(200).json(role)
+        else
+            res.status(400).json({ message: 'Role not deleted' })
+    } catch (error) {
+        console.log(error)
+    }
+}
 module.exports = {
     getAllRole,
-    createRole
+    createRole,
+    deleteRole
 }

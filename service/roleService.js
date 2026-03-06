@@ -43,7 +43,7 @@ const updateRole = async (id, roleData) => {
 
 const deleteRole = async (id) => {
     try {
-        const role = await roleModel.findByIdAndUpdate(id, { isDeleted: true }, { new: true })
+        const role = await roleModel.findByIdAndUpdate({ _id: id }, { isDeleted: true }, { new: true })
         return role
     } catch (error) {
         console.log('Error in deleteRole', error)
